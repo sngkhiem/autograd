@@ -106,3 +106,10 @@ x.\text{grad} = (1 - z^{2}) \cdot z.\text{grad}
 $$
 
 **Note on accumulation:** a variable may influence the output through multiple downstream paths, so gradients are **summed** (using `+=`) during backprop to implement the multivariable chain rule.
+
+**Note on topological sort:** We need to perform topological sort (just a DFS) to make sure our backward pass go through from the right to the left of an expression.
+
+## Reference:
+[Micrograd](https://github.com/karpathy/micrograd)
+
+
