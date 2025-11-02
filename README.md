@@ -1,8 +1,10 @@
 # Autograd
 
+My small project to understand how backpropagation work.
+
 ## Gradient computation and the chain rule
 
-The gradients are computed via reverse-mode automatic differentiation using the chain rule. For any \(x_i\) in the computational graph with final output \(L\):
+The gradients are computed via reverse-mode automatic differentiation using the chain rule. For any $x_i$ in the computational graph with final output $L$:
 
 $$
 \frac{dL}{dx_{i}} = \sum_{j \in \mathrm{children}(i)} \frac{dL}{dz_{j}} \times \frac{\partial z_{j}}{\partial x_{i}}
@@ -105,11 +107,13 @@ $$
 x.\text{grad} = (1 - z^{2}) \cdot z.\text{grad}
 $$
 
-**Note on accumulation:** a variable may influence the output through multiple downstream paths, so gradients are **summed** (using `+=`) during backprop to implement the multivariable chain rule.
+**Note on accumulation:** a variable may influence the output through multiple downstream paths, so gradients are **summed** (using `+=`) during backprop to implement the multivariable chain rule. Example: $z=x+x$, the derivative of $z$ should be $2$, but if we don't sum up the gradient, the result will be $1$.
 
 **Note on topological sort:** We need to perform topological sort (just a DFS) to make sure our backward pass go through from the right to the left of an expression.
 
 ## Reference:
+[The chain rule](https://en-wikipedia-org.translate.goog/wiki/Chain_rule?_x_tr_sl=en&_x_tr_tl=vi&_x_tr_hl=vi&_x_tr_pto=tc)
+
 [Micrograd](https://github.com/karpathy/micrograd)
 
 
