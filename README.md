@@ -1,3 +1,5 @@
+#Autograd
+
 ## Gradient computation and the chain rule
 
 The gradients are computed via reverse-mode automatic differentiation using the chain rule. For any \(x_i\) in the computational graph with final output \(L\):
